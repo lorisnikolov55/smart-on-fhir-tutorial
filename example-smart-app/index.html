@@ -84,6 +84,7 @@
     <script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
+      console.log("Hello Loris");
       extractData().then(
         //Display Patient Demographics and Observations if extractData was success
         function(p) {
@@ -93,7 +94,6 @@
         //Display 'Failed to call FHIR Service' if extractData failed
         function() {
           $('#loading').hide();
-          console.log("Hello Loris");
           $('#errors').html('<p> Failed to call FHIR Service </p>');
         }
       );
