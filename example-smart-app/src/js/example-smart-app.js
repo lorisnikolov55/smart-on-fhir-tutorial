@@ -34,8 +34,8 @@
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given; //.join(' ');
             lname = patient.name[0].family; //.join(' ');
-            console.log(typeof patient.name[0].given);
-            console.log(typeof patient.name[0].family[0]);
+            console.log(typeof patient.name[0].given[0]);
+            console.log(typeof patient.name[0].family);
             //console.log("Patient is called "+fname+" "+lname);
           }
 
