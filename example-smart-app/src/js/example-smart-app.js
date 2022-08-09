@@ -33,8 +33,11 @@
           var i = 0;
 
           if (typeof patient.name[0] !== 'undefined') {
-            fname = patient.name[0].given[0];
-            lname = patient.name[0].family.join(' ');
+            fname = patient.name.text[1];
+            lname = patient.name.text[2];
+            console.log("Patient's name is " + fname + " " + lname);
+            //fname = patient.name[0].given[0];
+            //lname = patient.name[0].family;
             //fname = patient.name[0].given.join(' ');
             //lname = patient.name[0].family.join(' ');
           }
