@@ -30,16 +30,17 @@
 
           var fname = '';
           var lname = '';
+          var i = 0;
 
           if (typeof patient.name[0] !== 'undefined') {
             console.log(typeof patient.name[0]);
-            fname = patient.name[0].given[0].join(' ');
-            lname = patient.name[0].family.join(' ');
-            //fname = patient.name[0].given[0]; //.join(' ');
-            //lname = patient.name[0].family; //.join(' ');
-            //console.log(typeof patient.name[0].given[0]);
-            //console.log(typeof patient.name[0].family);
-            //console.log("Patient is called "+fname+" "+lname);
+            for(i = 0; i < patient.name.length; i++){
+              fname = fname + " " + patient.name[0].given[i];
+            } 
+            lname = patient.name[0].family;
+            console.log("Patient is called "+fname+" "+lname);
+            //fname = patient.name[0].given[0].join(' ');
+            //lname = patient.name[0].family.join(' ');
           }
 
           var height = byCodes('8302-2');
