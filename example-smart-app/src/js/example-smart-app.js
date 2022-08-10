@@ -134,7 +134,7 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
-    $('#hdl').html(o.immunization)
+    $('#hdl').html(p.immunization)
   };
 
 })(window);
