@@ -46,7 +46,7 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
-          var immunization = byCodes('74107-1');
+          var immunization = byCodes('31044-1');
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
