@@ -46,7 +46,11 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
+
+          //error checking
           console.log(byCodes("8302-2"));
+          console.log(getBloodPressureValue(byCodes('55284-4'),'8480-6'));
+          console.log(getBloodPressureValue(byCodes('55284-4'),'8462-4'));
           console.log(byCodes('2085-9'));
           console.log(byCodes('2089-1'));
 
