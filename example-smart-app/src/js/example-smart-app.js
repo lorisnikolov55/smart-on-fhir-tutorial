@@ -47,7 +47,7 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
 
-          //error checking
+          //checking requests
           console.log(byCodes("8302-2"));
           console.log(byCodes('8480-6'));
           console.log(byCodes('8462-4'));
@@ -60,11 +60,10 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
-          p.systolicbp = getQuantityValueAndUnit(systolicbp);
 
-          //if (typeof systolicbp != 'undefined')  {
-          //  p.systolicbp = systolicbp;
-          //}
+          if (typeof systolicbp != 'undefined')  {
+            p.systolicbp = systolicbp;
+          }
 
           if (typeof diastolicbp != 'undefined') {
             p.diastolicbp = diastolicbp;
