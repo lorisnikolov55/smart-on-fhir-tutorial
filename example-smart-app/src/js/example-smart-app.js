@@ -11,54 +11,70 @@
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
-        var obv = smart.patient.api.fetchAll({
-                    type: 'Observation',
-                    query: {
-                      code: {
-                        $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
-                              'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
-                              'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
-                      }
-                    }
-                  });
+
+         var obv = smart.patient.api.fetchAll({
+           type: 'Observation',
+           query: {
+             code: {
+               $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
+                     'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
+                     'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
+             }
+           }
+         });
+
+        // Previous UW values for lymph
+        //var obv = smart.patient.api.fetchAll({
+        //  type: 'Observation',
+        //  query: {
+        //    code: {
+        //      $or: ['http://loinc.org|26478-8', 'http://loinc.org|2345-7']
+        //    }
+        //  }
+        //});
+
+        console.log('patient:');
+        console.log(patient)
 
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
+          console.log("byCodes:");
+          console.log(byCodes('8480-6'));
+          console.log(byCodes('8462-4'));
+
           var gender = patient.gender;
 
           var fname = '';
           var lname = '';
 
           if (typeof patient.name[0] !== 'undefined') {
-            fname = patient.name[0].given[0];
+            fname = patient.name[0].given.join(' ');
             lname = patient.name[0].family;
-            //console.log("Patient's name is " + fname + " " + lname);
-            //fname = patient.name[0].given[0];
-            //lname = patient.name[0].family;
-            //fname = patient.name[0].given.join(' ');
-            //lname = patient.name[0].family.join(' ');
           }
 
-          var height = byCodes('8302-2');
-          var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
-          var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
-          var hdl = byCodes('2085-9');
-          var ldl = byCodes('2089-1');
+          // Observations
+          // lymph = byCodes('26478-8');
+          // Cerner SoF Tutorial Observations
+           var height = byCodes('8302-2');
+           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
+           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
+           var hdl = byCodes('2085-9');
+           var ldl = byCodes('2089-1');
 
-          //checking requests
-          console.log(byCodes("8302-2"));
-          console.log(byCodes('8480-6'));
-          console.log(byCodes('8462-4'));
-          console.log(byCodes('2085-9'));
-          console.log(byCodes('2089-1'));
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
+
+          // Observations
+          //p.lymph = getQuantityValueAndUnit(lymph[0]);
+
+
+          // Cerner SoF Tutorial Observations
           p.height = getQuantityValueAndUnit(height[0]);
 
           if (typeof systolicbp != 'undefined')  {
@@ -71,7 +87,8 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
-
+          console.log('p:');
+          console.log(p);
           ret.resolve(p);
         });
       } else {
@@ -90,6 +107,9 @@
       lname: {value: ''},
       gender: {value: ''},
       birthdate: {value: ''},
+      // lymph: {value: ''}
+
+      // Cerner SoF Tutorial Observations
       height: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''},
@@ -97,6 +117,8 @@
       hdl: {value: ''},
     };
   }
+
+  // Helper Function
 
   function getBloodPressureValue(BPObservations, typeOfPressure) {
     var formattedBPObservations = [];
@@ -133,10 +155,15 @@
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
+    //$('#lymph').html(p.lymph);
+    
+    // Cerner SoF Tutorial Observations
+
     $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
   };
+
 })(window);
