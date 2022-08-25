@@ -47,6 +47,13 @@ body {
 
 .child {
   background-color: white;
+  border-color: blue;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: thin;
+  margin-top: 20px;
+  text-align: center;
+  top: 50px;
   width: 100px;
   height: 100px;
   margin: auto;
