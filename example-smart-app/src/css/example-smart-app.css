@@ -38,10 +38,10 @@ body {
   animation-delay: -0.16s;
 }
 
-.parent {
+/*.parent {
   display: flex;
   background-color: navy;
-}
+}*/
 
 .child {
   background-color: white;
