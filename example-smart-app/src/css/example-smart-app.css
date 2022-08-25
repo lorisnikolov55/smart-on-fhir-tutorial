@@ -39,13 +39,14 @@ body {
   animation-delay: -0.16s;
 }
 
-.parent {
+/*.parent {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+}*/
 
-.child {
+.child { 
+  display: table;
   background-color: white;
   width: fit-content;
   height: fit-content;
