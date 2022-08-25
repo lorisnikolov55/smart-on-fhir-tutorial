@@ -45,11 +45,12 @@ body {
 
 .child {
   background-color: white;
+  width: fit-content;
+  height: fit-content;
   border-color: blue;
   border-radius: 20px;
   border-style: solid;
   border-width: thin;
-  margin-top: 20px;
   text-align: center;
   margin: auto;
 }
