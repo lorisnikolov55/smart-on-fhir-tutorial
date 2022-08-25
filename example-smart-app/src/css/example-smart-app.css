@@ -38,6 +38,18 @@ body {
   animation-delay: -0.16s;
 }
 
+.parent {
+  display: flex;
+  height: 400px;
+  background-color: navy;
+}
+
+.child {
+  background-color: white;
+  width: 100px;
+  height: 100px;
+}
+
 @-webkit-keyframes sk-bouncedelay {
   0%, 80%, 100% { -webkit-transform: scale(0) }
   40% { -webkit-transform: scale(1.0) }
