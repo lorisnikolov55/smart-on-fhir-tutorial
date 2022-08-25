@@ -54,8 +54,8 @@ body {
   text-align: center;
   margin: auto;
   top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
 }
 
 @-webkit-keyframes sk-bouncedelay {
