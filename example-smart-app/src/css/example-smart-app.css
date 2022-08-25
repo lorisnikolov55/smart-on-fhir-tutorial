@@ -53,9 +53,7 @@ body {
   border-width: thin;
   margin-top: 20px;
   text-align: center;
-  top: 50px;
-  width: 100px;
-  height: 100px;
+  margin-top: 50px;
   margin: auto;
 }
 
