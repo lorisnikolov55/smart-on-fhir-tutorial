@@ -53,6 +53,7 @@ body {
   border-width: thin;
   text-align: center;
   margin: auto;
+  top: 50%;
 }
 
 @-webkit-keyframes sk-bouncedelay {
