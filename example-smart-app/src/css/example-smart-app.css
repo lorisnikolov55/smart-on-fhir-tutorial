@@ -53,6 +53,7 @@ body {
   border-width: thin;
   text-align: center;
   margin: auto;
+  position: absolute;
   top: 50%;
   -ms-transform: translateY(25%);
   transform: translateY(25%);
