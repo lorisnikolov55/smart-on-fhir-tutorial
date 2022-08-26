@@ -46,6 +46,7 @@
         fetch(req)
           .then((response) => {
             if (response.ok) {
+              console.log(response.json())
               return response.json();
             } else {
               throw new Error("Bad HTTP stuff!");
@@ -53,10 +54,7 @@
           })
           .then((jsonData) => {
             console.log(jsonData);
-            console.log(typeof(jsonData));
-            const parseData = JSON.parse(jsonData);
-            console.log(parseData);
-          })
+            })
           .catch((err) => {
             console.log("ERROR: ", err.message);
           });
