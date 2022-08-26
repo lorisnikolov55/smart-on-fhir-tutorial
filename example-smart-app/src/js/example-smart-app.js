@@ -54,7 +54,7 @@
           .then((jsonData) => {
             console.log(jsonData);
             console.log(jsonData.entry[0].resource.manufacturer);
-            console.log(jsonData.entry[0].vaccineCode.coding.text);
+            console.log(jsonData.entry[0].vaccineCode.coding[0].display);
           })
           .catch((err) => {
             console.log("ERROR: ", err.message);
