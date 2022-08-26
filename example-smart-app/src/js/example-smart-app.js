@@ -56,7 +56,7 @@
           })
           .then((jsonData) => {
             vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
-            vaccineManufacturer = jsonData.entry[0].resource.manufacturer;
+            vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display;
             vaccineStatus = jsonData.entry[0].resource.status;
             doseQuantity = String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit;
             
