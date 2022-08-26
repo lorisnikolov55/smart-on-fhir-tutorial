@@ -32,6 +32,8 @@
         var vaccineManufacturer = undefined;
         var vaccineStatus = undefined;
         var doseQuantity = undefined;
+        var dateGiven = undefined;
+        var expiryDate = undefined
 
         const uri =
           "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
@@ -59,12 +61,16 @@
             vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display;
             vaccineStatus = jsonData.entry[0].resource.status;
             doseQuantity = String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit;
+            dateGiven = jsonData.entry[0].resource.date;
+            expiryDate = jsonData.entry[0].resource.expirationDate;
             
             console.log(jsonData.entry[0]);
             console.log(jsonData.entry[0].resource.vaccineCode.text);
             console.log(jsonData.entry[0].resource.manufacturer);
             console.log(jsonData.entry[0].resource.status);
-            console.log(String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit)
+            console.log(String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit);
+            console.log(jsonData.entry[0].resource.date);
+            console.log(expiryDate = jsonData.entry[0].resource.expirationDate);
           })
           .catch((err) => {
             console.log("ERROR: ", err.message);
@@ -185,7 +191,9 @@
       vCode: { value:"" },
       vManufacturer: { value:"" },
       vStatus: { value:"" },
-      vDoseQuantity: { value:"" }
+      vDoseQuantity: { value:"" },
+      vDateGiven: { value:"" },
+      vExpiryDate: { value:"" }
     };
   }
 
@@ -244,5 +252,7 @@
     $("#manufacturer").html(p.vManufacturer);
     $("#status").html(p.vStatus);
     $("#quantity").html(p.vDoseQuantity);
+    $("#dateGiven").html(p.vDateGiven);
+    $("#expiryDate").html(p.vExpiryDate);
   };
 })(window);
