@@ -53,7 +53,9 @@
           })
           .then((jsonData) => {
             console.log(jsonData);
-            console.log(JSON.parse(jsonData));
+            console.log(typeof(jsonData));
+            const parseData = JSON.parse(jsonData);
+            console.log(parseData);
           })
           .catch((err) => {
             console.log("ERROR: ", err.message);
