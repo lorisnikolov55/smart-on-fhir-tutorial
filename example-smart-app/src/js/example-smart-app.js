@@ -28,8 +28,11 @@
           },
         });
 
+        //const uri =
+        //  "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=12724066";
         const uri =
-          "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=12724066";
+          "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
+          str(patient.id);
         let h = new Headers();
         h.append("Accept", "application/json+fhir");
 
@@ -44,7 +47,7 @@
             if (response.ok) {
               return response.json();
             } else {
-              throw new Error('Bad HTTP stuff!');
+              throw new Error("Bad HTTP stuff!");
             }
           })
           .then((jsonData) => {
