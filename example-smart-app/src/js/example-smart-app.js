@@ -53,7 +53,6 @@
           })
           .then((jsonData) => {
             console.log(jsonData.entry[0]);
-            console.log(jsonData.entry[0].vaccineCode.coding[0].display);
             console.log(jsonData.entry[0].resource.vaccineCode.text);
             console.log(jsonData.entry[0].resource.manufacturer);
             console.log(jsonData.entry[0].resource.status);
