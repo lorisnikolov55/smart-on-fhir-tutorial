@@ -46,7 +46,6 @@
         fetch(req)
           .then((response) => {
             if (response.ok) {
-              console.log(response.json())
               return response.json();
             } else {
               throw new Error("Bad HTTP stuff!");
@@ -58,8 +57,6 @@
           .catch((err) => {
             console.log("ERROR: ", err.message);
           });
-
-          //const obj = JSON.parse(response.json());
 
         $.when(pt, obv).fail(onError);
 
