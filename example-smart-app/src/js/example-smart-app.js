@@ -52,6 +52,11 @@
             }
           })
           .then((jsonData) => {
+            var vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
+            var vaccineManufacturer = jsonData.entry[0].resource.manufacturer;
+            var vaccineStatus = jsonData.entry[0].resource.status;
+            var doseQuantity = String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit;
+            
             console.log(jsonData.entry[0]);
             console.log(jsonData.entry[0].resource.vaccineCode.text);
             console.log(jsonData.entry[0].resource.manufacturer);
@@ -93,6 +98,10 @@
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
+          p.vCode = vaccineCode;
+          p.vManufacturer = vaccineManufacturer;
+          p.vStatus = vaccineStatus;
+          p.vDoseQuantity = doseQuantity;
           //p.age = parseInt(calculateAge(dob));
 
           if (
@@ -168,6 +177,12 @@
       diastolicbp: { value: "" },
       ldl: { value: "" },
       hdl: { value: "" },
+
+      //Immunization data
+      vCode: { value:"" },
+      vManufacturer: { value:"" },
+      vStatus: { value:"" },
+      vDoseQuantity: { value:"" }
     };
   }
 
@@ -220,5 +235,11 @@
     $("#diastolicbp").html(p.diastolicbp);
     $("#ldl").html(p.ldl);
     $("#hdl").html(p.hdl);
+
+    //Immunization data
+    $("#type").html(p.vCode);
+    $("#manufacturer").html(p.vManufacturer);
+    $("#status").html(p.vStatus);
+    $("#quantity").html(p.vDoseQuantity);
   };
 })(window);
