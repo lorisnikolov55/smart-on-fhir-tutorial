@@ -58,7 +58,9 @@
             console.log("ERROR: ", err.message);
           });
 
-          console.log(jsonData.entry[0]);
+          const obj = JSON.parse(jsonData);
+          obj.entry = obj.entry[0]
+          console.log(obj.entry);
 
         $.when(pt, obv).fail(onError);
 
