@@ -57,14 +57,15 @@
             }
           })
           .then((jsonData) => {
+            console.log(jsonData.entry[0]);
+            
             vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
             vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display;
             vaccineStatus = jsonData.entry[0].resource.status;
             doseQuantity = String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit;
             dateGiven = jsonData.entry[0].resource.date;
             expiryDate = jsonData.entry[0].resource.expirationDate;
-            
-            console.log(jsonData.entry[0]);
+          
             console.log(jsonData.entry[0].resource.vaccineCode.text);
             console.log(jsonData.entry[0].resource.manufacturer.display);
             console.log(jsonData.entry[0].resource.status);
@@ -113,7 +114,6 @@
           p.vDoseQuantity = doseQuantity;
           p.vDateGiven = dateGiven;
           p.vExpiryDate = expiryDate;
-          //p.age = parseInt(calculateAge(dob));
 
           if (
             typeof height[0] != "undefined" &&
