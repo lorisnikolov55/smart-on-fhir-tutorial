@@ -32,6 +32,7 @@
         //  "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=12724066";
         const uri =
           "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
+        console.log(uri);
           String(patient.id);
         let h = new Headers();
         h.append("Accept", "application/json+fhir");
