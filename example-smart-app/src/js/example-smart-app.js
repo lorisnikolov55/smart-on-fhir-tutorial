@@ -22,11 +22,37 @@
                 "http://loinc.org|2085-9",
                 "http://loinc.org|2089-1",
                 "http://loinc.org|55284-4",
-                "http://loinc.org|3141-9"
+                "http://loinc.org|3141-9",
               ],
             },
           },
         });
+
+        const uri =
+          "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=12724066";
+        let h = new Headers();
+        h.append("Accept", "application/json+fhir");
+
+        let req = new Request(uri, {
+          method: "GET",
+          headers: h,
+          mode: "cors",
+        });
+
+        fetch(req)
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error('Bad HTTP stuff!');
+            }
+          })
+          .then((jsonData) => {
+            console.log(jsonData);
+          })
+          .catch((err) => {
+            console.log("ERROR: ", err.message);
+          });
 
         $.when(pt, obv).fail(onError);
 
