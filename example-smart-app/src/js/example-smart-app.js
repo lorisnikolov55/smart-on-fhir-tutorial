@@ -41,7 +41,7 @@
           method: "GET",
           headers: h,
           mode: "cors",
-        });
+        }); 
 
         fetch(req)
           .then((response) => {
@@ -57,6 +57,8 @@
           .catch((err) => {
             console.log("ERROR: ", err.message);
           });
+
+          console.log(jsonData.entry[0]);
 
         $.when(pt, obv).fail(onError);
 
