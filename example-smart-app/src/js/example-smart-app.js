@@ -111,6 +111,8 @@
           p.vManufacturer = vaccineManufacturer;
           p.vStatus = vaccineStatus;
           p.vDoseQuantity = doseQuantity;
+          p.vDateGiven = dateGiven;
+          p.vExpiryDate = expiryDate;
           //p.age = parseInt(calculateAge(dob));
 
           if (
