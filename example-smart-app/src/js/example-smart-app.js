@@ -53,7 +53,7 @@
           })
           .then((jsonData) => {
             console.log(jsonData);
-            console.log(jsonData.entry[0]);
+            console.log(jsonData.entry[0].resource.manufacturer);
             })
           .catch((err) => {
             console.log("ERROR: ", err.message);
