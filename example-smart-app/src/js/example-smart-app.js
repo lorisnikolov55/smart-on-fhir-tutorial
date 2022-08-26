@@ -53,7 +53,7 @@
           })
           .then((jsonData) => {
             console.log(jsonData);
-            console.log(jsonData[0]);
+            console.log(jsonData.entry[0]);
             })
           .catch((err) => {
             console.log("ERROR: ", err.message);
