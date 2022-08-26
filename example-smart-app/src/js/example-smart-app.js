@@ -52,9 +52,12 @@
             }
           })
           .then((jsonData) => {
-            console.log(jsonData);
-            console.log(jsonData.entry[0].resource.manufacturer);
+            console.log(jsonData.entry[0]);
             console.log(jsonData.entry[0].vaccineCode.coding[0].display);
+            console.log(jsonData.entry[0].resource.vaccineCode.text);
+            console.log(jsonData.entry[0].resource.manufacturer);
+            console.log(jsonData.entry[0].resource.status);
+            console.log(String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit)
           })
           .catch((err) => {
             console.log("ERROR: ", err.message);
