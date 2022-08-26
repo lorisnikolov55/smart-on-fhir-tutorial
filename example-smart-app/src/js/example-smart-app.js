@@ -28,8 +28,11 @@
           },
         });
 
-        //const uri =
-        //  "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=12724066";
+        var vaccineCode = undefined;
+        var vaccineManufacturer = undefined;
+        var vaccineStatus = undefined;
+        var doseQuantity = undefined;
+
         const uri =
           "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
           String(patient.id);
@@ -52,10 +55,10 @@
             }
           })
           .then((jsonData) => {
-            var vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
-            var vaccineManufacturer = jsonData.entry[0].resource.manufacturer;
-            var vaccineStatus = jsonData.entry[0].resource.status;
-            var doseQuantity = String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit;
+            vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
+            vaccineManufacturer = jsonData.entry[0].resource.manufacturer;
+            vaccineStatus = jsonData.entry[0].resource.status;
+            doseQuantity = String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit;
             
             console.log(jsonData.entry[0]);
             console.log(jsonData.entry[0].resource.vaccineCode.text);
