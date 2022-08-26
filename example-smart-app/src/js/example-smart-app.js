@@ -56,7 +56,6 @@
             console.log(jsonData.entry[0].resource.manufacturer);
             //console.log(jsonData.entry[0].text.String(div));
             console.log(jsonData.entry[0].vaccineCode);
-            console.log(jsonData.entry[0].vaccineCode[1]);
           })
           .catch((err) => {
             console.log("ERROR: ", err.message);
