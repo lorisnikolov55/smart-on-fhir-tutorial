@@ -41,7 +41,7 @@
           method: "GET",
           headers: h,
           mode: "cors",
-        }); 
+        });
 
         fetch(req)
           .then((response) => {
@@ -55,7 +55,7 @@
             console.log(jsonData);
             console.log(jsonData.entry[0].resource.manufacturer);
             console.log(jsonData.entry[0].text);
-            })
+          })
           .catch((err) => {
             console.log("ERROR: ", err.message);
           });
