@@ -33,7 +33,7 @@
         var vaccineStatus = undefined;
         var doseQuantity = undefined;
         var dateGiven = undefined;
-        var expiryDate = undefined
+        var expiryDate = undefined;
 
         const uri =
           "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
@@ -59,32 +59,48 @@
           .then((jsonData) => {
             console.log(jsonData.entry[0]);
 
-            if(typeof jsonData.entry[0].resource.vaccineCode.text !== "undefined") {
+            if (
+              typeof jsonData.entry[0].resource.vaccineCode.text !== "undefined"
+            ) {
               vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
               console.log(vaccineCode);
             }
 
-            if(typeof jsonData.entry[0].resource.manufacturer.display !== "undefined") {
-              vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display;
+            if (
+              typeof jsonData.entry[0].resource.manufacturer.display !==
+              "undefined"
+            ) {
+              vaccineManufacturer =
+                jsonData.entry[0].resource.manufacturer.display;
               console.log(vaccineManufacturer);
             }
 
-            if(typeof jsonData.entry[0].resource.status !== "undefined") {
+            if (typeof jsonData.entry[0].resource.status !== "undefined") {
               vaccineStatus = jsonData.entry[0].resource.status;
               console.log(vaccineStatus);
             }
-            
-            if(typeof String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit !== "undefined") {
-              doseQuantity = String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit;;
+
+            if (
+              typeof String(jsonData.entry[0].resource.doseQuantity.value) +
+                " " +
+                jsonData.entry[0].resource.doseQuantity.unit !==
+              "undefined"
+            ) {
+              doseQuantity =
+                String(jsonData.entry[0].resource.doseQuantity.value) +
+                " " +
+                jsonData.entry[0].resource.doseQuantity.unit;
               console.log(doseQuantity);
             }
-            
-            if(typeof jsonData.entry[0].resource.date !== "undefined") {
+
+            if (typeof jsonData.entry[0].resource.date !== "undefined") {
               dateGiven = jsonData.entry[0].resource.date;
               console.log(dateGiven);
             }
 
-            if(typeof jsonData.entry[0].resource.expirationDate !== "undefined") {
+            if (
+              typeof jsonData.entry[0].resource.expirationDate !== "undefined"
+            ) {
               expiryDate = jsonData.entry[0].resource.expirationDate;
               console.log(expiryDate);
             }
@@ -95,7 +111,7 @@
             //doseQuantity = String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit;
             //dateGiven = jsonData.entry[0].resource.date;
             //expiryDate = jsonData.entry[0].resource.expirationDate; // may be source of error
-          
+
             //console.log(jsonData.entry[0].resource.vaccineCode.text);
             //console.log(jsonData.entry[0].resource.manufacturer.display); //may be source of error
             //console.log(jsonData.entry[0].resource.status);
@@ -220,12 +236,12 @@
       hdl: { value: "" },
 
       //Immunization data
-      vCode: { value:"" },
-      vManufacturer: { value:"" },
-      vStatus: { value:"" },
-      vDoseQuantity: { value:"" },
-      vDateGiven: { value:"" },
-      vExpiryDate: { value:"" }
+      vCode: { value: "" },
+      vManufacturer: { value: "" },
+      vStatus: { value: "" },
+      vDoseQuantity: { value: "" },
+      vDateGiven: { value: "" },
+      vExpiryDate: { value: "" },
     };
   }
 
