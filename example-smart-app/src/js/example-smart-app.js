@@ -73,12 +73,12 @@
               vaccineManufacturer =
                 jsonData.entry[0].resource.manufacturer.display;
               console.log(vaccineManufacturer);
-            }
+            }*/
 
             if (typeof jsonData.entry[0].resource.status !== "undefined") {
               vaccineStatus = jsonData.entry[0].resource.status;
               console.log(vaccineStatus);
-            }*/
+            }
 
             if (
               typeof String(jsonData.entry[0].resource.doseQuantity.value) +
