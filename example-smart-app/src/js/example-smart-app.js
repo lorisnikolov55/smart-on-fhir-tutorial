@@ -68,13 +68,14 @@
               p.vCode = vaccineCode;
             }
   
-            if (
+            //UNDEFINED
+            /*if (
               typeof jsonData.entry[0].resource.manufacturer.display !== "undefined"
             ) {
               vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display;
               console.log(vaccineManufacturer);
               p.vManufacturer = vaccineManufacturer;
-            }
+            }*/
   
             if (
               typeof jsonData.entry[0].resource.status  !== "undefined"
@@ -99,15 +100,15 @@
               console.log(dateGiven);
               p.vDateGiven = dateGiven;
             }
-            
-            if (
+
+            //UNDEFINED
+            /*if (
               typeof jsonData.entry[0].resource.expirationDate !== "undefined"
             ) {
               expiryDate = jsonData.entry[0].resource.expirationDate;
               console.log(expiryDate);
               p.vExpiryDate = expiryDate;
-            }
-            
+            }*/
 
             //vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
             //vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display; 
