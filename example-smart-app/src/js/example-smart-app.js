@@ -66,7 +66,7 @@
               console.log(vaccineCode);
             }
 
-            if (
+            /*if (
               typeof jsonData.entry[0].resource.manufacturer.display !==
               "undefined"
             ) {
@@ -78,9 +78,9 @@
             if (typeof jsonData.entry[0].resource.status !== "undefined") {
               vaccineStatus = jsonData.entry[0].resource.status;
               console.log(vaccineStatus);
-            }
+            }*/
 
-            /*if (
+            if (
               typeof String(jsonData.entry[0].resource.doseQuantity.value) +
                 " " +
                 jsonData.entry[0].resource.doseQuantity.unit !==
@@ -91,7 +91,7 @@
                 " " +
                 jsonData.entry[0].resource.doseQuantity.unit;
               console.log(doseQuantity);
-            }*/
+            }
 
             if (typeof jsonData.entry[0].resource.date !== "undefined") {
               dateGiven = jsonData.entry[0].resource.date;
