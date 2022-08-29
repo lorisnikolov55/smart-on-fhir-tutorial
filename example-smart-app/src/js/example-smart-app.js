@@ -28,6 +28,7 @@
           },
         });
 
+        var p = defaultPatient();
         var vaccineCode = undefined;
         var vaccineManufacturer = undefined;
         var vaccineStatus = undefined;
@@ -58,23 +59,63 @@
           })
           .then((jsonData) => {
             console.log(jsonData.entry[0]);
-            console.log(typeof(vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display));
-            console.log(typeof(expiryDate = jsonData.entry[0].resource.expirationDate));
-            console.log(typeof(jsonData.entry[0].resource.vaccineCode.text))
+
+            if (
+              typeof vaccineCode !== "undefined"
+            ) {
+              console.log(vaccineCode);
+              p.vCode = vaccineCode;
+            }
+  
+            if (
+              typeof vaccineManufacturer !== "undefined"
+            ) {
+              console.log(vaccineManufacturer);
+              p.vManufacturer = vaccineManufacturer;
+            }
+  
+            if (
+              typeof vaccineStatus !== "undefined"
+            ) {
+              console.log(vaccineStatus);
+              p.vStatus = vaccineStatus;
+            }
+  
+            if (
+              typeof doseQuantity !== "undefined"
+            ) {
+              console.log(doseQuantity);
+              p.vDoseQuantity = doseQuantity;
+            }
+  
+            if (
+              typeof dateGiven !== "undefined"
+            ) {
+              console.log(dateGiven);
+              p.vDateGiven = dateGiven;
+            }
+            
+            if (
+              typeof expiryDate !== "undefined"
+            ) {
+              console.log(expiryDate);
+              p.vExpiryDate = expiryDate;
+            }
+            
 
             //vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
-            //vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display; // may be source of error
+            //vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display; 
             //vaccineStatus = jsonData.entry[0].resource.status;
             //doseQuantity = String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit;
             //dateGiven = jsonData.entry[0].resource.date;
-            //expiryDate = jsonData.entry[0].resource.expirationDate; // may be source of error
+            //expiryDate = jsonData.entry[0].resource.expirationDate; 
 
             //console.log(jsonData.entry[0].resource.vaccineCode.text);
-            //console.log(jsonData.entry[0].resource.manufacturer.display); //may be source of error
+            //console.log(jsonData.entry[0].resource.manufacturer.display); /
             //console.log(jsonData.entry[0].resource.status);
             //console.log(String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit);
             //console.log(jsonData.entry[0].resource.date);
-            //console.log(expiryDate = jsonData.entry[0].resource.expirationDate); // may be source of error
+            //console.log(expiryDate = jsonData.entry[0].resource.expirationDate);
           })
           .catch((err) => {
             console.log("ERROR: ", err.message);
@@ -166,7 +207,7 @@
               ldl[0].valueQuantity.value + " " + ldl[0].valueQuantity.unit;
           }
 
-          if (
+          /*if (
             typeof vaccineCode !== "undefined"
           ) {
             console.log(vaccineCode);
@@ -206,7 +247,7 @@
           ) {
             console.log(expiryDate);
             p.vExpiryDate = expiryDate;
-          }
+          }*/
 
           ret.resolve(p);
         });
