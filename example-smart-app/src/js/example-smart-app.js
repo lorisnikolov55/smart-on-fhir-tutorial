@@ -64,6 +64,7 @@
             ) {
               vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
               console.log(vaccineCode);
+              p.vCode = vaccineCode;
             }
 
             /*if (
@@ -73,11 +74,13 @@
               vaccineManufacturer =
                 jsonData.entry[0].resource.manufacturer.display;
               console.log(vaccineManufacturer);
+              p.vManufacturer = vaccineManufacturer;
             }*/
 
             if (typeof jsonData.entry[0].resource.status !== "undefined") {
               vaccineStatus = jsonData.entry[0].resource.status;
               console.log(vaccineStatus);
+              p.vStatus = vaccineStatus;
             }
 
             if (
@@ -91,19 +94,22 @@
                 " " +
                 jsonData.entry[0].resource.doseQuantity.unit;
               console.log(doseQuantity);
+              p.vDoseQuantity = doseQuantity;
             }
 
             if (typeof jsonData.entry[0].resource.date !== "undefined") {
               dateGiven = jsonData.entry[0].resource.date;
               console.log(dateGiven);
+              p.vDateGiven = dateGiven;
             }
 
-            if (
+            /*if (
               typeof jsonData.entry[0].resource.expirationDate !== "undefined"
             ) {
               expiryDate = jsonData.entry[0].resource.expirationDate;
               console.log(expiryDate);
-            }
+              p.vExpiryDate = expiryDate;
+            }*/
 
             //vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
             //vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display; // may be source of error
@@ -154,12 +160,12 @@
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
-          p.vCode = vaccineCode;
-          p.vManufacturer = vaccineManufacturer;
-          p.vStatus = vaccineStatus;
-          p.vDoseQuantity = doseQuantity;
-          p.vDateGiven = dateGiven;
-          p.vExpiryDate = expiryDate;
+          //p.vCode = vaccineCode;
+          //p.vManufacturer = vaccineManufacturer;
+          //p.vStatus = vaccineStatus;
+          //p.vDoseQuantity = doseQuantity;
+          //p.vDateGiven = dateGiven;
+          //p.vExpiryDate = expiryDate;
 
           if (
             typeof height[0] != "undefined" &&
