@@ -28,8 +28,6 @@
           },
         });
 
-        var p = defaultPatient();
-
         var vaccineCode = undefined;
         var vaccineManufacturer = undefined;
         var vaccineStatus = undefined;
@@ -61,64 +59,12 @@
           .then((jsonData) => {
             console.log(jsonData.entry[0]);
 
-            if (
-              typeof jsonData.entry[0].resource.vaccineCode.text !== "undefined"
-            ) {
-              vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
-              console.log(vaccineCode);
-              p.vCode = vaccineCode;
-            }
-
-            /*if (
-              typeof jsonData.entry[0].resource.manufacturer.display !==
-              "undefined"
-            ) {
-              vaccineManufacturer =
-                jsonData.entry[0].resource.manufacturer.display;
-              console.log(vaccineManufacturer);
-              p.vManufacturer = vaccineManufacturer;
-            }*/
-
-            if (typeof jsonData.entry[0].resource.status !== "undefined") {
-              vaccineStatus = jsonData.entry[0].resource.status;
-              console.log(vaccineStatus);
-              p.vStatus = vaccineStatus;
-            }
-
-            if (
-              typeof String(jsonData.entry[0].resource.doseQuantity.value) +
-                " " +
-                jsonData.entry[0].resource.doseQuantity.unit !==
-              "undefined"
-            ) {
-              doseQuantity =
-                String(jsonData.entry[0].resource.doseQuantity.value) +
-                " " +
-                jsonData.entry[0].resource.doseQuantity.unit;
-              console.log(doseQuantity);
-              p.vDoseQuantity = doseQuantity;
-            }
-
-            if (typeof jsonData.entry[0].resource.date !== "undefined") {
-              dateGiven = jsonData.entry[0].resource.date;
-              console.log(dateGiven);
-              p.vDateGiven = dateGiven;
-            }
-
-            /*if (
-              typeof jsonData.entry[0].resource.expirationDate !== "undefined"
-            ) {
-              expiryDate = jsonData.entry[0].resource.expirationDate;
-              console.log(expiryDate);
-              p.vExpiryDate = expiryDate;
-            }*/
-
-            //vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
-            //vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display; // may be source of error
-            //vaccineStatus = jsonData.entry[0].resource.status;
-            //doseQuantity = String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit;
-            //dateGiven = jsonData.entry[0].resource.date;
-            //expiryDate = jsonData.entry[0].resource.expirationDate; // may be source of error
+            vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
+            vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display; // may be source of error
+            vaccineStatus = jsonData.entry[0].resource.status;
+            doseQuantity = String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit;
+            dateGiven = jsonData.entry[0].resource.date;
+            expiryDate = jsonData.entry[0].resource.expirationDate; // may be source of error
 
             //console.log(jsonData.entry[0].resource.vaccineCode.text);
             //console.log(jsonData.entry[0].resource.manufacturer.display); //may be source of error
@@ -157,7 +103,7 @@
           var hdl = byCodes("2085-9");
           var ldl = byCodes("2089-1");
 
-          //var p = defaultPatient();
+          var p = defaultPatient();
           p.birthdate = dobStr;
           p.gender = gender;
           p.fname = fname;
@@ -216,6 +162,49 @@
             p.ldl =
               ldl[0].valueQuantity.value + " " + ldl[0].valueQuantity.unit;
           }
+
+          if (
+            typeof vaccineCode !== "undefined"
+          ) {
+            console.log(vaccineCode);
+            p.vCode = vaccineCode;
+          }
+
+          if (
+            typeof vaccineManufacturer !== "undefined"
+          ) {
+            console.log(vaccineManufacturer);
+            p.vManufacturer = vaccineManufacturer;
+          }
+
+          if (
+            typeof vaccineStatus !== "undefined"
+          ) {
+            console.log(vaccineStatus);
+            p.vStatus = vaccineStatus;
+          }
+
+          if (
+            typeof doseQuantity !== "undefined"
+          ) {
+            console.log(doseQuantity);
+            p.vDoseQuantity = doseQuantity;
+          }
+
+          if (
+            typeof dateGiven !== "undefined"
+          ) {
+            console.log(dateGiven);
+            p.vDateGiven = dateGiven;
+          }
+          
+          if (
+            typeof expiryDate !== "undefined"
+          ) {
+            console.log(expiryDate);
+            p.vExpiryDate = expiryDate;
+          }
+
           ret.resolve(p);
         });
       } else {
