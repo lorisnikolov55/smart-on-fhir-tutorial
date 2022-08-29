@@ -28,6 +28,8 @@
           },
         });
 
+        var p = defaultPatient();
+
         var vaccineCode = undefined;
         var vaccineManufacturer = undefined;
         var vaccineStatus = undefined;
@@ -155,7 +157,7 @@
           var hdl = byCodes("2085-9");
           var ldl = byCodes("2089-1");
 
-          var p = defaultPatient();
+          //var p = defaultPatient();
           p.birthdate = dobStr;
           p.gender = gender;
           p.fname = fname;
