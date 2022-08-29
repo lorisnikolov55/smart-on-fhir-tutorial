@@ -61,43 +61,49 @@
             console.log(jsonData.entry[0]);
 
             if (
-              typeof vaccineCode !== "undefined"
+              typeof jsonData.entry[0].resource.vaccineCode.text !== "undefined"
             ) {
+              vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
               console.log(vaccineCode);
               p.vCode = vaccineCode;
             }
   
             if (
-              typeof vaccineManufacturer !== "undefined"
+              typeof jsonData.entry[0].resource.manufacturer.display !== "undefined"
             ) {
+              vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display;
               console.log(vaccineManufacturer);
               p.vManufacturer = vaccineManufacturer;
             }
   
             if (
-              typeof vaccineStatus !== "undefined"
+              typeof jsonData.entry[0].resource.status  !== "undefined"
             ) {
+              vaccineStatus = jsonData.entry[0].resource.status;
               console.log(vaccineStatus);
               p.vStatus = vaccineStatus;
             }
   
             if (
-              typeof doseQuantity !== "undefined"
+              typeof String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit !== "undefined"
             ) {
+              doseQuantity = String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit;
               console.log(doseQuantity);
               p.vDoseQuantity = doseQuantity;
             }
   
             if (
-              typeof dateGiven !== "undefined"
+              typeof jsonData.entry[0].resource.date !== "undefined"
             ) {
+              dateGiven = jsonData.entry[0].resource.date;
               console.log(dateGiven);
               p.vDateGiven = dateGiven;
             }
             
             if (
-              typeof expiryDate !== "undefined"
+              typeof jsonData.entry[0].resource.expirationDate !== "undefined"
             ) {
+              expiryDate = jsonData.entry[0].resource.expirationDate;
               console.log(expiryDate);
               p.vExpiryDate = expiryDate;
             }
