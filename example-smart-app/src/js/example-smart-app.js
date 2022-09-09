@@ -69,13 +69,13 @@
             }
   
             //UNDEFINED
-            /*if (
+            if (
               typeof jsonData.entry[0].resource.manufacturer.display !== "undefined"
             ) {
               vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display;
               console.log(vaccineManufacturer);
               p.vManufacturer = vaccineManufacturer;
-            }*/
+            }
   
             if (
               typeof jsonData.entry[0].resource.status  !== "undefined"
