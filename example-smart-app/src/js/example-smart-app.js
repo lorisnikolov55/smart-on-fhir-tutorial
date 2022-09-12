@@ -36,6 +36,9 @@
         var dateGiven = undefined;
         var expiryDate = undefined;
 
+        //Testing displaying undefined value
+        console.log(expiryDate);
+
         const uri =
           "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
           String(patient.id);
