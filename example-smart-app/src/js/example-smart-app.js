@@ -203,7 +203,7 @@
           console.log(doseQuantity);
           console.log(p.vDateGiven);
           console.log(dateGiven);
-          console.log(expirationDate);
+          console.log(expiryDate);
           console.log(p.vExpiryDate);
 
           /*if (
