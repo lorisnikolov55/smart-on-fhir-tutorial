@@ -57,6 +57,7 @@
             }
           })
           .then((jsonData) => {
+            return true;
             console.log(jsonData.entry[0]);
 
             if (jsonData.entry[0].resource.hasOwnProperty("vaccineCode")) {
@@ -152,6 +153,9 @@
               console.log(expiryDate);
             }
           });
+        
+        returnValue = fetch(req)
+        console.log(returnValue);
 
         $.when(pt, obv).fail(onError);
 
