@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "fhirclient": "^2.5.2"
+    "fhirclient": "^2.5.2",
+    "git": "^0.1.5"
   }
 }
