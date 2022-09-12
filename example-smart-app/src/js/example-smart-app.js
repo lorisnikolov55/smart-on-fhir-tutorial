@@ -193,66 +193,60 @@
           p.vExpiryDate = expiryDate;
 
           // Testing
-          console.log(p.vCode);
           console.log(vaccineCode);
-          console.log(p.vManufacturer);
           console.log(vaccineManufacturer);
-          console.log(p.vStatus);
           console.log(vaccineStatus);
-          console.log(p.vDoseQuantity);
           console.log(doseQuantity);
-          console.log(p.vDateGiven);
           console.log(dateGiven);
-          console.log(expiryDate);
-          console.log(p.vExpiryDate);
+          console.log(expirYDate);
 
           /*if (
-            typeof height[0] != "undefined" &&
-            typeof height[0].valueQuantity.value != "undefined" &&
-            typeof height[0].valueQuantity.unit != "undefined"
-          ) {
-            p.height =
-              height[0].valueQuantity.value +
-              " " +
-              height[0].valueQuantity.unit;
-          }
+              typeof height[0] != "undefined" &&
+              typeof height[0].valueQuantity.value != "undefined" &&
+              typeof height[0].valueQuantity.unit != "undefined"
+            ) {
+              p.height =
+                height[0].valueQuantity.value +
+                " " +
+                height[0].valueQuantity.unit;
+            }
 
-          if (
-            typeof weight[0] != "undefined" &&
-            typeof weight[0].valueQuantity.value != "undefined" &&
-            typeof weight[0].valueQuantity.unit != "undefined"
-          ) {
-            p.weight =
-              weight[0].valueQuantity.value +
-              " " +
-              weight[0].valueQuantity.unit;
-          }
+            if (
+              typeof weight[0] != "undefined" &&
+              typeof weight[0].valueQuantity.value != "undefined" &&
+              typeof weight[0].valueQuantity.unit != "undefined"
+            ) {
+              p.weight =
+                weight[0].valueQuantity.value +
+                " " +
+                weight[0].valueQuantity.unit;
+            }
 
-          if (typeof systolicbp != "undefined") {
-            p.systolicbp = systolicbp;
-          }
+            if (typeof systolicbp != "undefined") {
+              p.systolicbp = systolicbp;
+            }
 
-          if (typeof diastolicbp != "undefined") {
-            p.diastolicbp = diastolicbp;
-          }
+            if (typeof diastolicbp != "undefined") {
+              p.diastolicbp = diastolicbp;
+            }
 
-          if (
-            typeof hdl[0] != "undefined" &&
-            typeof hdl[0].valueQuantity.value != "undefined" &&
-            typeof hdl[0].valueQuantity.unit != "undefined"
-          ) {
-            p.hdl =
-              hdl[0].valueQuantity.value + " " + hdl[0].valueQuantity.unit;
-          }
+            if (
+              typeof hdl[0] != "undefined" &&
+              typeof hdl[0].valueQuantity.value != "undefined" &&
+              typeof hdl[0].valueQuantity.unit != "undefined"
+            ) {
+              p.hdl =
+                hdl[0].valueQuantity.value + " " + hdl[0].valueQuantity.unit;
+            }
 
-          if (
-            typeof ldl[0] != "undefined" &&
-            typeof ldl[0].valueQuantity.value != "undefined" &&
-            typeof ldl[0].valueQuantity.unit != "undefined"
-          ) {
-            p.ldl =
-              ldl[0].valueQuantity.value + " " + ldl[0].valueQuantity.unit;
-          }*/
+            if (
+              typeof ldl[0] != "undefined" &&
+              typeof ldl[0].valueQuantity.value != "undefined" &&
+              typeof ldl[0].valueQuantity.unit != "undefined"
+            ) {
+              p.ldl =
+                ldl[0].valueQuantity.value + " " + ldl[0].valueQuantity.unit;
+            }*/
           ret.resolve(p);
         });
       } else {
