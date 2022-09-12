@@ -28,13 +28,13 @@
           },
         });
 
-        var p = defaultPatient();
+        //var p = defaultPatient();
         var vaccineCode = undefined;
-        var vaccineManufacturer = undefined;
+        //var vaccineManufacturer = undefined;
         var vaccineStatus = undefined;
         var doseQuantity = undefined;
         var dateGiven = undefined;
-        var expiryDate = undefined;
+        //var expiryDate = undefined;
 
         const uri =
           "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
@@ -73,12 +73,12 @@
               typeof jsonData.entry[0].resource.manufacturer.display !==
               "undefined"
             ) {
-              vaccineManufacturer =
+              var vaccineManufacturer =
                 jsonData.entry[0].resource.manufacturer.display;
               console.log(vaccineManufacturer);
               //p.vManufacturer = vaccineManufacturer;
             } else {
-              vaccineManufacturer = "Vaccine manufacturer is not defined!";
+              var vaccineManufacturer = "Vaccine manufacturer is not defined!";
               console.log(vaccineManufacturer);
             }
 
@@ -112,12 +112,12 @@
             if (
               typeof jsonData.entry[0].resource.expirationDate !== "undefined"
             ) {
-              expiryDate = jsonData.entry[0].resource.expirationDate;
+              var expiryDate = jsonData.entry[0].resource.expirationDate;
               console.log(expiryDate);
               //p.vExpiryDate = expiryDate;
             }
             else{
-              expiryDate = "Expiry date is not defined!";
+              var expiryDate = "Expiry date is not defined!";
               console.log(expiryDate);
             }
 
