@@ -137,10 +137,10 @@
             //console.log(String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit);
             //console.log(jsonData.entry[0].resource.date);
             //console.log(expiryDate = jsonData.entry[0].resource.expirationDate);
-          })
-          .catch((err) => {
-            console.log("ERROR: ", err.message);
           });
+          //.catch((err) => {
+          //  console.log("ERROR: ", err.message);
+          //});
 
         $.when(pt, obv).fail(onError);
 
