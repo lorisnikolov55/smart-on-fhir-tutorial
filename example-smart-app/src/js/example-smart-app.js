@@ -151,27 +151,7 @@
               expiryDate = "NA";
               console.log(expiryDate);
             }
-
-            //vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
-            //vaccineManufacturer = jsonData.entry[0].resource.manufacturer.display;
-            //vaccineStatus = jsonData.entry[0].resource.status;
-            //doseQuantity =
-            // String(jsonData.entry[0].resource.doseQuantity.value) +
-            //  " " +
-            //  jsonData.entry[0].resource.doseQuantity.unit;
-            //dateGiven = jsonData.entry[0].resource.date;
-            //expiryDate = jsonData.entry[0].resource.expirationDate;
-
-            //console.log(jsonData.entry[0].resource.vaccineCode.text);
-            //console.log(jsonData.entry[0].resource.manufacturer.display); /
-            //console.log(jsonData.entry[0].resource.status);
-            //console.log(String(jsonData.entry[0].resource.doseQuantity.value)+" "+jsonData.entry[0].resource.doseQuantity.unit);
-            //console.log(jsonData.entry[0].resource.date);
-            //console.log(expiryDate = jsonData.entry[0].resource.expirationDate);
           });
-        //.catch((err) => {
-        //  console.log("ERROR: ", err.message);
-        //});
 
         $.when(pt, obv).fail(onError);
 
@@ -211,6 +191,13 @@
           p.vDoseQuantity = doseQuantity;
           p.vDateGiven = dateGiven;
           p.vExpiryDate = expiryDate;
+
+          console.log(p.vCode);
+          console.log(p.vManufacturer);
+          console.log(p.vStatus);
+          console.log(p.vDoseQuantity);
+          console.log(p.vDateGiven);
+          console.log(p.vExpiryDate);
 
           if (
             typeof height[0] != "undefined" &&
@@ -322,12 +309,12 @@
       // lymph: {value: ''}
 
       // Cerner SoF Tutorial Observations
-      height: { value: "" },
-      weight: { value: "" },
-      systolicbp: { value: "" },
-      diastolicbp: { value: "" },
-      ldl: { value: "" },
-      hdl: { value: "" },
+      //height: { value: "" },
+      //weight: { value: "" },
+      //systolicbp: { value: "" },
+      //diastolicbp: { value: "" },
+      //ldl: { value: "" },
+      //hdl: { value: "" },
 
       //Immunization data
       vCode: { value: "" },
