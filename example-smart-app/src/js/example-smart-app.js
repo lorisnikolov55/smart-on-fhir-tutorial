@@ -68,17 +68,26 @@
               //p.vCode = vaccineCode;
             }
 
+            /***** Testing hasOwnProperty method *****/
+            if(jsonData.entry[0].resource.hasOwnProperty('vaccineCode')){
+              console.log("Success!");
+            }
+            if(jsonData.entry[0].resource.hasOwnProperty('manufacturer')){
+              console.log("Shouldn't see this!");
+            }
+
             //UNDEFINED
             if (
               typeof jsonData.entry[0].resource.manufacturer.display !==
-              "undefined"
+                "undefined" &&
+              jsonData.entry[0].resource.hasOwnProperty("manufacturer")
             ) {
-              var vaccineManufacturer =
+              vaccineManufacturer =
                 jsonData.entry[0].resource.manufacturer.display;
               console.log(vaccineManufacturer);
               //p.vManufacturer = vaccineManufacturer;
             } else {
-              var vaccineManufacturer = "Vaccine manufacturer is not defined!";
+              vaccineManufacturer = "Vaccine manufacturer is not defined!";
               console.log(vaccineManufacturer);
             }
 
@@ -115,8 +124,7 @@
               var expiryDate = jsonData.entry[0].resource.expirationDate;
               console.log(expiryDate);
               //p.vExpiryDate = expiryDate;
-            }
-            else{
+            } else {
               var expiryDate = "Expiry date is not defined!";
               console.log(expiryDate);
             }
@@ -138,9 +146,9 @@
             //console.log(jsonData.entry[0].resource.date);
             //console.log(expiryDate = jsonData.entry[0].resource.expirationDate);
           });
-          //.catch((err) => {
-          //  console.log("ERROR: ", err.message);
-          //});
+        //.catch((err) => {
+        //  console.log("ERROR: ", err.message);
+        //});
 
         $.when(pt, obv).fail(onError);
 
