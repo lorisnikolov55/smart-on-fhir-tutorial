@@ -72,17 +72,17 @@
             }
 
             /***** Testing hasOwnProperty method *****/
-            if(jsonData.entry[0].resource.hasOwnProperty('vaccineCode')){
+            if (jsonData.entry[0].resource.hasOwnProperty("vaccineCode")) {
               console.log("Success!");
             }
-            if(jsonData.entry[0].resource.hasOwnProperty('manufacturer')){
+            if (jsonData.entry[0].resource.hasOwnProperty("manufacturer")) {
               console.log("Shouldn't see this!");
             }
 
             //UNDEFINED
             if (
-              typeof jsonData.entry[0].resource.manufacturer.display !==
-                "undefined" &&
+              //typeof jsonData.entry[0].resource.manufacturer.display !==
+              //  "undefined" &&
               jsonData.entry[0].resource.hasOwnProperty("manufacturer")
             ) {
               vaccineManufacturer =
