@@ -91,6 +91,19 @@
               console.log(vaccineManufacturer);
             }
 
+            if (jsonData.entry[0].resource.hasOwnProperty("status")) {
+              if (typeof jsonData.entry[0].resource.status !== undefined) {
+                vaccineStatus = jsonData.entry[0].resource.status;
+                console.log(vaccineStatus);
+              } else {
+                vaccineStatus = "NA";
+                console.log(vaccineStatus);
+              }
+            } else {
+              vaccineStatus = "NA";
+              console.log(vaccineStatus);
+            }
+
             if (jsonData.entry[0].resource.hasOwnProperty("doseQuantity")) {
               if (
                 typeof String(jsonData.entry[0].resource.doseQuantity.value) ||
@@ -365,16 +378,15 @@
     $("#lname").html(p.lname);
     $("#gender").html(p.gender);
     $("#birthdate").html(p.birthdate);
+    
     //$('#lymph').html(p.lymph);
-
     // Cerner SoF Tutorial Observations
-
-    $("#height").html(p.height);
-    $("#weight").html(p.weight);
-    $("#systolicbp").html(p.systolicbp);
-    $("#diastolicbp").html(p.diastolicbp);
-    $("#ldl").html(p.ldl);
-    $("#hdl").html(p.hdl);
+    //$("#height").html(p.height);
+    //$("#weight").html(p.weight);
+    //$("#systolicbp").html(p.systolicbp);
+    //$("#diastolicbp").html(p.diastolicbp);
+    //$("#ldl").html(p.ldl);
+    //$("#hdl").html(p.hdl);
 
     //Immunization data
     $("#type").html(p.vCode);
