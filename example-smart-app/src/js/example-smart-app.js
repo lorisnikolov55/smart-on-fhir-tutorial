@@ -30,11 +30,11 @@
 
         //var p = defaultPatient();
         var vaccineCode = undefined;
-        //var vaccineManufacturer = undefined;
+        var vaccineManufacturer = undefined;
         var vaccineStatus = undefined;
         var doseQuantity = undefined;
         var dateGiven = undefined;
-        //var expiryDate = undefined;
+        var expiryDate = undefined;
 
         const uri =
           "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
