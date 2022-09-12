@@ -194,10 +194,16 @@
 
           // Testing
           console.log(p.vCode);
+          console.log(vaccineCode);
           console.log(p.vManufacturer);
+          console.log(vaccineManufacturer);
           console.log(p.vStatus);
+          console.log(vaccineStatus);
           console.log(p.vDoseQuantity);
+          console.log(doseQuantity);
           console.log(p.vDateGiven);
+          console.log(dateGiven);
+          console.log(expirationDate);
           console.log(p.vExpiryDate);
 
           /*if (
