@@ -198,7 +198,7 @@
           console.log(vaccineStatus);
           console.log(doseQuantity);
           console.log(dateGiven);
-          console.log(expirYDate);
+          console.log(expiryDate);
 
           /*if (
               typeof height[0] != "undefined" &&
