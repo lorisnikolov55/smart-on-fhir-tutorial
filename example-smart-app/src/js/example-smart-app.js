@@ -27,17 +27,13 @@
             },
           },
         });
-
-        //var p = defaultPatient();
+        
         var vaccineCode = undefined;
         var vaccineManufacturer = undefined;
         var vaccineStatus = undefined;
         var doseQuantity = undefined;
         var dateGiven = undefined;
         var expiryDate = undefined;
-
-        //Testing displaying undefined value
-        console.log(expiryDate);
 
         const uri =
           "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
@@ -63,72 +59,84 @@
           .then((jsonData) => {
             console.log(jsonData.entry[0]);
 
-            if (
-              typeof jsonData.entry[0].resource.vaccineCode.text !== "undefined"
-            ) {
-              vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
-              console.log(vaccineCode);
-              //p.vCode = vaccineCode;
-            }
-
-            /***** Testing hasOwnProperty method *****/
             if (jsonData.entry[0].resource.hasOwnProperty("vaccineCode")) {
-              console.log("Success!");
+              if (
+                typeof jsonData.entry[0].resource.vaccineCode.text !== undefined
+              ) {
+                vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
+                console.log(vaccineCode);
+              } else {
+                vaccineCode = "NA";
+                console.log(vaccineCode);
+              }
+            } else {
+              vaccineCode = "NA";
+              console.log(vaccineCode);
             }
+
             if (jsonData.entry[0].resource.hasOwnProperty("manufacturer")) {
-              console.log("Shouldn't see this!");
-            }
-
-            //UNDEFINED
-            if (
-              //typeof jsonData.entry[0].resource.manufacturer.display !==
-              //  "undefined" &&
-              jsonData.entry[0].resource.hasOwnProperty("manufacturer")
-            ) {
-              vaccineManufacturer =
-                jsonData.entry[0].resource.manufacturer.display;
-              console.log(vaccineManufacturer);
-              //p.vManufacturer = vaccineManufacturer;
+              if (
+                typeof jsonData.entry[0].resource.manufacturer.display !==
+                undefined
+              ) {
+                vaccineManufacturer =
+                  jsonData.entry[0].resource.manufacturer.display;
+                console.log(vaccineManufacturer);
+              } else {
+                vaccineManufacturer = "NA";
+                console.log(vaccineManufacturer);
+              }
             } else {
-              vaccineManufacturer = "Vaccine manufacturer is not defined!";
+              vaccineManufacturer = "NA";
               console.log(vaccineManufacturer);
             }
 
-            if (typeof jsonData.entry[0].resource.status !== "undefined") {
-              vaccineStatus = jsonData.entry[0].resource.status;
-              console.log(vaccineStatus);
-              //p.vStatus = vaccineStatus;
-            }
-
-            if (
-              typeof String(jsonData.entry[0].resource.doseQuantity.value) +
-                " " +
-                jsonData.entry[0].resource.doseQuantity.unit !==
-              "undefined"
-            ) {
-              doseQuantity =
-                String(jsonData.entry[0].resource.doseQuantity.value) +
-                " " +
-                jsonData.entry[0].resource.doseQuantity.unit;
+            if (jsonData.entry[0].resource.hasOwnProperty("doseQuantity")) {
+              if (
+                typeof String(jsonData.entry[0].resource.doseQuantity.value) +
+                  " " +
+                  jsonData.entry[0].resource.doseQuantity.unit !==
+                "undefined"
+              ) {
+                doseQuantity =
+                  String(jsonData.entry[0].resource.doseQuantity.value) +
+                  " " +
+                  jsonData.entry[0].resource.doseQuantity.unit;
+                console.log(doseQuantity);
+              } else {
+                doseQuantity = "NA";
+                console.log(doseQuantity);
+              }
+            } else {
+              doseQuantity = "NA";
               console.log(doseQuantity);
-              //p.vDoseQuantity = doseQuantity;
             }
 
-            if (typeof jsonData.entry[0].resource.date !== "undefined") {
-              dateGiven = jsonData.entry[0].resource.date;
-              console.log(dateGiven);
-              //p.vDateGiven = dateGiven;
-            }
-
-            //UNDEFINED
-            if (
-              typeof jsonData.entry[0].resource.expirationDate !== "undefined"
-            ) {
-              var expiryDate = jsonData.entry[0].resource.expirationDate;
-              console.log(expiryDate);
-              //p.vExpiryDate = expiryDate;
+            if (jsonData.entry[0].resource.hasOwnProperty("date")) {
+              if (typeof jsonData.entry[0].resource.date !== undefined) {
+                dateGiven = jsonData.entry[0].resource.date;
+                console.log(dateGiven);
+              } else {
+                dateGiven = "NA";
+                console.log(dateGiven);
+              }
             } else {
-              var expiryDate = "Expiry date is not defined!";
+              dateGiven = "NA";
+              console.log(dateGiven);
+            }
+
+            if (jsonData.entry[0].resource.hasOwnProperty("expirationDate")) {
+              if (
+                typeof jsonData.entry[0].resource.expirationDate !== undefined
+              ) {
+                expiryDate = jsonData.entry[0].resource.expirationDate;
+                console.log(expiryDate);
+              } else {
+                expiryDate = "NA";
+                console.log(expiryDate);
+              }
+            } else {
+              expiryDate = "NA";
               console.log(expiryDate);
             }
 
