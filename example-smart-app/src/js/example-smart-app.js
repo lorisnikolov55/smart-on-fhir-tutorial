@@ -27,7 +27,7 @@
             },
           },
         });
-        
+
         var vaccineCode = undefined;
         var vaccineManufacturer = undefined;
         var vaccineStatus = undefined;
@@ -93,10 +93,9 @@
 
             if (jsonData.entry[0].resource.hasOwnProperty("doseQuantity")) {
               if (
-                typeof String(jsonData.entry[0].resource.doseQuantity.value) +
-                  " " +
-                  jsonData.entry[0].resource.doseQuantity.unit !==
-                "undefined"
+                typeof String(jsonData.entry[0].resource.doseQuantity.value) ||
+                jsonData.entry[0].resource.doseQuantity.unit !== "undefined" ||
+                jsonData.entry[0].resource.doseQuantity.unit !== "unknown unit"
               ) {
                 doseQuantity =
                   String(jsonData.entry[0].resource.doseQuantity.value) +
