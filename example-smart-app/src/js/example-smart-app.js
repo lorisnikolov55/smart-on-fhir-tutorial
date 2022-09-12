@@ -192,6 +192,7 @@
           p.vDateGiven = dateGiven;
           p.vExpiryDate = expiryDate;
 
+          // Testing
           console.log(p.vCode);
           console.log(p.vManufacturer);
           console.log(p.vStatus);
@@ -199,7 +200,7 @@
           console.log(p.vDateGiven);
           console.log(p.vExpiryDate);
 
-          if (
+          /*if (
             typeof height[0] != "undefined" &&
             typeof height[0].valueQuantity.value != "undefined" &&
             typeof height[0].valueQuantity.unit != "undefined"
@@ -245,50 +246,7 @@
           ) {
             p.ldl =
               ldl[0].valueQuantity.value + " " + ldl[0].valueQuantity.unit;
-          }
-
-          /*if (
-            typeof vaccineCode !== "undefined"
-          ) {
-            console.log(vaccineCode);
-            p.vCode = vaccineCode;
-          }
-
-          if (
-            typeof vaccineManufacturer !== "undefined"
-          ) {
-            console.log(vaccineManufacturer);
-            p.vManufacturer = vaccineManufacturer;
-          }
-
-          if (
-            typeof vaccineStatus !== "undefined"
-          ) {
-            console.log(vaccineStatus);
-            p.vStatus = vaccineStatus;
-          }
-
-          if (
-            typeof doseQuantity !== "undefined"
-          ) {
-            console.log(doseQuantity);
-            p.vDoseQuantity = doseQuantity;
-          }
-
-          if (
-            typeof dateGiven !== "undefined"
-          ) {
-            console.log(dateGiven);
-            p.vDateGiven = dateGiven;
-          }
-          
-          if (
-            typeof expiryDate !== "undefined"
-          ) {
-            console.log(expiryDate);
-            p.vExpiryDate = expiryDate;
           }*/
-
           ret.resolve(p);
         });
       } else {
@@ -365,7 +323,7 @@
     $("#lname").html(p.lname);
     $("#gender").html(p.gender);
     $("#birthdate").html(p.birthdate);
-    
+
     //$('#lymph').html(p.lymph);
     // Cerner SoF Tutorial Observations
     //$("#height").html(p.height);
