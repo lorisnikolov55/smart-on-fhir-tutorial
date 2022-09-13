@@ -28,13 +28,12 @@
           },
         });
 
-        const immunizationData = [];
-        var vaccineCode = undefined;
-        var vaccineManufacturer = undefined;
-        var vaccineStatus = undefined;
-        var doseQuantity = undefined;
-        var dateGiven = undefined;
-        var expiryDate = undefined;
+        var vaccineCode = 'vaccineCode';
+        var vaccineManufacturer = 'vaccineManufacturer';
+        var vaccineStatus = 'vaccineStatus';
+        var doseQuantity = 'doseQuantity';
+        var dateGiven = 'dateGiven';
+        var expiryDate = 'expiryDate';
 
         const uri =
           "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
@@ -59,6 +58,7 @@
           })
           .then((jsonData) => {
             console.log(jsonData.entry[0]);
+            const immunizationData = [];
 
             if (jsonData.entry[0].resource.hasOwnProperty("vaccineCode")) {
               if (
