@@ -1,5 +1,4 @@
 (function (window) {
-
   /***** Data fetching function *****/
   window.extractData = function () {
     var ret = $.Deferred();
@@ -13,7 +12,7 @@
       if (smart.hasOwnProperty("patient")) {
         var patient = smart.patient;
         var pt = patient.read();
-      
+
         const uri =
           "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
           String(patient.id);
@@ -45,45 +44,25 @@
             var expiryDate = undefined;
 
             if (jsonData.entry[0].resource.hasOwnProperty("vaccineCode")) {
-              if (
-                typeof jsonData.entry[0].resource.vaccineCode.text !== undefined
-              ) {
-                vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
-                console.log(vaccineCode);
-              } else {
-                vaccineCode = "NA";
-                console.log(vaccineCode);
-              }
+              vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
+              console.log(vaccineCode);
             } else {
               vaccineCode = "NA";
               console.log(vaccineCode);
             }
 
             if (jsonData.entry[0].resource.hasOwnProperty("manufacturer")) {
-              if (
-                typeof jsonData.entry[0].resource.manufacturer.display !==
-                undefined
-              ) {
-                vaccineManufacturer =
-                  jsonData.entry[0].resource.manufacturer.display;
-                console.log(vaccineManufacturer);
-              } else {
-                vaccineManufacturer = "NA";
-                console.log(vaccineManufacturer);
-              }
+              vaccineManufacturer =
+                jsonData.entry[0].resource.manufacturer.display;
+              console.log(vaccineManufacturer);
             } else {
               vaccineManufacturer = "NA";
               console.log(vaccineManufacturer);
             }
 
             if (jsonData.entry[0].resource.hasOwnProperty("status")) {
-              if (typeof jsonData.entry[0].resource.status !== undefined) {
-                vaccineStatus = jsonData.entry[0].resource.status;
-                console.log(vaccineStatus);
-              } else {
-                vaccineStatus = "NA";
-                console.log(vaccineStatus);
-              }
+              vaccineStatus = jsonData.entry[0].resource.status;
+              console.log(vaccineStatus);
             } else {
               vaccineStatus = "NA";
               console.log(vaccineStatus);
@@ -92,7 +71,6 @@
             if (jsonData.entry[0].resource.hasOwnProperty("doseQuantity")) {
               if (
                 typeof String(jsonData.entry[0].resource.doseQuantity.value) ||
-                jsonData.entry[0].resource.doseQuantity.unit !== "undefined" ||
                 jsonData.entry[0].resource.doseQuantity.unit !== "unknown unit"
               ) {
                 doseQuantity =
@@ -110,28 +88,16 @@
             }
 
             if (jsonData.entry[0].resource.hasOwnProperty("date")) {
-              if (typeof jsonData.entry[0].resource.date !== undefined) {
-                dateGiven = jsonData.entry[0].resource.date;
-                console.log(dateGiven);
-              } else {
-                dateGiven = "NA";
-                console.log(dateGiven);
-              }
+              dateGiven = jsonData.entry[0].resource.date;
+              console.log(dateGiven);
             } else {
               dateGiven = "NA";
               console.log(dateGiven);
             }
 
             if (jsonData.entry[0].resource.hasOwnProperty("expirationDate")) {
-              if (
-                typeof jsonData.entry[0].resource.expirationDate !== undefined
-              ) {
-                expiryDate = jsonData.entry[0].resource.expirationDate;
-                console.log(expiryDate);
-              } else {
-                expiryDate = "NA";
-                console.log(expiryDate);
-              }
+              expiryDate = jsonData.entry[0].resource.expirationDate;
+              console.log(expiryDate);
             } else {
               expiryDate = "NA";
               console.log(expiryDate);
@@ -161,7 +127,7 @@
               p.fname = fname;
               p.lname = lname;
 
-              // Immunizations 
+              // Immunizations
               p.vCode = vaccineCode;
               p.vManufacturer = vaccineManufacturer;
               p.vStatus = vaccineStatus;
