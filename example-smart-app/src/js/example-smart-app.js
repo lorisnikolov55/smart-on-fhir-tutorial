@@ -28,13 +28,6 @@
           },
         });
 
-        var vaccineCode = 'vaccineCode';
-        var vaccineManufacturer = 'vaccineManufacturer';
-        var vaccineStatus = 'vaccineStatus';
-        var doseQuantity = 'doseQuantity';
-        var dateGiven = 'dateGiven';
-        var expiryDate = 'expiryDate';
-
         const uri =
           "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
           String(patient.id);
@@ -58,7 +51,13 @@
           })
           .then((jsonData) => {
             console.log(jsonData.entry[0]);
-            const immunizationData = [];
+            var immunizationData = [];
+            var vaccineCode = undefined;
+            var vaccineManufacturer = undefined;
+            var vaccineStatus = undefined;
+            var doseQuantity = undefined;
+            var dateGiven = undefined;
+            var expiryDate = undefined;
 
             if (jsonData.entry[0].resource.hasOwnProperty("vaccineCode")) {
               if (
@@ -160,10 +159,61 @@
             }
 
             console.log(immunizationData);
-            return immunizationData;
+
+            $.when(pt, obv).fail(onError);
+
+            $.when(pt, obv).done(function (patient, obv) {
+              var byCodes = smart.byCodes(obv, "code");
+              var gender = patient.gender;
+              var dob = new Date(patient.birthDate);
+              var day = dob.getDate();
+              var monthIndex = dob.getMonth() + 1;
+              var year = dob.getFullYear();
+
+              var dobStr = monthIndex + "/" + day + "/" + year;
+              var fname = "";
+              var lname = "";
+
+              if (typeof patient.name[0] !== "undefined") {
+                fname = patient.name[0].given.join(" ");
+                lname = patient.name[0].family.join(" ");
+              }
+
+              var height = byCodes("8302-2");
+              var weight = byCodes("3141-9");
+              var systolicbp = getBloodPressureValue(byCodes("55284-4"), "8480-6");
+              var diastolicbp = getBloodPressureValue(byCodes("55284-4"), "8462-4");
+              var hdl = byCodes("2085-9");
+              var ldl = byCodes("2089-1");
+
+              var p = defaultPatient();
+              p.birthdate = dobStr;
+              p.gender = gender;
+              p.fname = fname;
+              p.lname = lname;
+
+              /***** PROBLEMS HERE *****/
+              // Immunizations 
+              p.vCode = vaccineCode;
+              p.vManufacturer = vaccineManufacturer;
+              p.vStatus = vaccineStatus;
+              p.vDoseQuantity = doseQuantity;
+              p.vDateGiven = dateGiven;
+              p.vExpiryDate = expiryDate;
+
+              // Testing
+              console.log(vaccineCode);
+              console.log(vaccineManufacturer);
+              console.log(vaccineStatus);
+              console.log(doseQuantity);
+              console.log(dateGiven);
+              console.log(expiryDate);
+
+              ret.resolve(p);
+            });
           });
 
-        $.when(pt, obv).fail(onError);
+        /*$.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function (patient, obv) {
           var byCodes = smart.byCodes(obv, "code");
@@ -195,7 +245,7 @@
           p.fname = fname;
           p.lname = lname;
 
-          /***** PROBLEMS HERE *****/
+          /***** PROBLEMS HERE *****
           // Immunizations 
           p.vCode = vaccineCode;
           p.vManufacturer = vaccineManufacturer;
@@ -213,7 +263,7 @@
           console.log(expiryDate);
 
           ret.resolve(p);
-        });
+        });*/
       } else {
         onError();
       }
