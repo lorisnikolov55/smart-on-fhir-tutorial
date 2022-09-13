@@ -1,3 +1,5 @@
+const { date } = require("joi");
+
 (function (window) {
   window.extractData = function () {
     var ret = $.Deferred();
@@ -28,6 +30,7 @@
           },
         });
 
+        const immunizationData = [];
         var vaccineCode = undefined;
         var vaccineManufacturer = undefined;
         var vaccineStatus = undefined;
@@ -64,6 +67,7 @@
                 typeof jsonData.entry[0].resource.vaccineCode.text !== undefined
               ) {
                 vaccineCode = jsonData.entry[0].resource.vaccineCode.text;
+                immunizationData.append(vaccineCode);
                 console.log(vaccineCode);
               } else {
                 vaccineCode = "NA";
@@ -81,6 +85,7 @@
               ) {
                 vaccineManufacturer =
                   jsonData.entry[0].resource.manufacturer.display;
+                  immunizationData.append(vaccineManufacturer);
                 console.log(vaccineManufacturer);
               } else {
                 vaccineManufacturer = "NA";
@@ -94,6 +99,7 @@
             if (jsonData.entry[0].resource.hasOwnProperty("status")) {
               if (typeof jsonData.entry[0].resource.status !== undefined) {
                 vaccineStatus = jsonData.entry[0].resource.status;
+                immunizationData.append(vaccineStatus);
                 console.log(vaccineStatus);
               } else {
                 vaccineStatus = "NA";
@@ -114,6 +120,7 @@
                   String(jsonData.entry[0].resource.doseQuantity.value) +
                   " " +
                   jsonData.entry[0].resource.doseQuantity.unit;
+                  immunizationData.append(doseQuantity);
                 console.log(doseQuantity);
               } else {
                 doseQuantity = "NA";
@@ -127,6 +134,7 @@
             if (jsonData.entry[0].resource.hasOwnProperty("date")) {
               if (typeof jsonData.entry[0].resource.date !== undefined) {
                 dateGiven = jsonData.entry[0].resource.date;
+                immunizationData.append(dateGiven);
                 console.log(dateGiven);
               } else {
                 dateGiven = "NA";
@@ -142,6 +150,7 @@
                 typeof jsonData.entry[0].resource.expirationDate !== undefined
               ) {
                 expiryDate = jsonData.entry[0].resource.expirationDate;
+                immunizationData.append(expiryDate);
                 console.log(expiryDate);
               } else {
                 expiryDate = "NA";
@@ -151,6 +160,9 @@
               expiryDate = "NA";
               console.log(expiryDate);
             }
+
+            console.log(immunizationData);
+            return immunizationData;
           });
 
         $.when(pt, obv).fail(onError);
@@ -200,53 +212,6 @@
           console.log(dateGiven);
           console.log(expiryDate);
 
-          /*if (
-              typeof height[0] != "undefined" &&
-              typeof height[0].valueQuantity.value != "undefined" &&
-              typeof height[0].valueQuantity.unit != "undefined"
-            ) {
-              p.height =
-                height[0].valueQuantity.value +
-                " " +
-                height[0].valueQuantity.unit;
-            }
-
-            if (
-              typeof weight[0] != "undefined" &&
-              typeof weight[0].valueQuantity.value != "undefined" &&
-              typeof weight[0].valueQuantity.unit != "undefined"
-            ) {
-              p.weight =
-                weight[0].valueQuantity.value +
-                " " +
-                weight[0].valueQuantity.unit;
-            }
-
-            if (typeof systolicbp != "undefined") {
-              p.systolicbp = systolicbp;
-            }
-
-            if (typeof diastolicbp != "undefined") {
-              p.diastolicbp = diastolicbp;
-            }
-
-            if (
-              typeof hdl[0] != "undefined" &&
-              typeof hdl[0].valueQuantity.value != "undefined" &&
-              typeof hdl[0].valueQuantity.unit != "undefined"
-            ) {
-              p.hdl =
-                hdl[0].valueQuantity.value + " " + hdl[0].valueQuantity.unit;
-            }
-
-            if (
-              typeof ldl[0] != "undefined" &&
-              typeof ldl[0].valueQuantity.value != "undefined" &&
-              typeof ldl[0].valueQuantity.unit != "undefined"
-            ) {
-              p.ldl =
-                ldl[0].valueQuantity.value + " " + ldl[0].valueQuantity.unit;
-            }*/
           ret.resolve(p);
         });
       } else {
