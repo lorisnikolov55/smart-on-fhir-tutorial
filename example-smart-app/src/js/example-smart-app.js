@@ -1,4 +1,6 @@
 (function (window) {
+
+  /***** Data fetching function *****/
   window.extractData = function () {
     var ret = $.Deferred();
 
@@ -11,23 +13,7 @@
       if (smart.hasOwnProperty("patient")) {
         var patient = smart.patient;
         var pt = patient.read();
-        /*var obv = smart.patient.api.fetchAll({
-          type: "Observation",
-          query: {
-            code: {
-              $or: [
-                "http://loinc.org|8302-2",
-                "http://loinc.org|8462-4",
-                "http://loinc.org|8480-6",
-                "http://loinc.org|2085-9",
-                "http://loinc.org|2089-1",
-                "http://loinc.org|55284-4",
-                "http://loinc.org|3141-9",
-              ],
-            },
-          },
-        });*/
-
+      
         const uri =
           "https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Immunization?patient=" +
           String(patient.id);
@@ -151,12 +137,9 @@
               console.log(expiryDate);
             }
 
-            //$.when(pt, obv).fail(onError);
             $.when(pt).fail(onError);
 
-            //$.when(pt, obv).done(function (patient, obv) {
             $.when(pt).done(function (patient) {
-              //var byCodes = smart.byCodes(obv, "code");
               var gender = patient.gender;
               var dob = new Date(patient.birthDate);
               var day = dob.getDate();
@@ -172,13 +155,6 @@
                 lname = patient.name[0].family.join(" ");
               }
 
-              /*var height = byCodes("8302-2");
-              var weight = byCodes("3141-9");
-              var systolicbp = getBloodPressureValue(byCodes("55284-4"), "8480-6");
-              var diastolicbp = getBloodPressureValue(byCodes("55284-4"), "8462-4");
-              var hdl = byCodes("2085-9");
-              var ldl = byCodes("2089-1");*/
-
               var p = defaultPatient();
               p.birthdate = dobStr;
               p.gender = gender;
@@ -193,14 +169,6 @@
               p.vDateGiven = dateGiven;
               p.vExpiryDate = expiryDate;
 
-              // Testing
-              console.log(vaccineCode);
-              console.log(vaccineManufacturer);
-              console.log(vaccineStatus);
-              console.log(doseQuantity);
-              console.log(dateGiven);
-              console.log(expiryDate);
-
               ret.resolve(p);
             });
           });
@@ -213,25 +181,16 @@
     return ret.promise();
   };
 
-  /***** HELPER FUNCTIONS *****/
-
+  /***** Patient object definition *****/
   function defaultPatient() {
     return {
+      // Patient data
       fname: { value: "" },
       lname: { value: "" },
       gender: { value: "" },
       birthdate: { value: "" },
-      // lymph: {value: ''}
 
-      // Cerner SoF Tutorial Observations
-      //height: { value: "" },
-      //weight: { value: "" },
-      //systolicbp: { value: "" },
-      //diastolicbp: { value: "" },
-      //ldl: { value: "" },
-      //hdl: { value: "" },
-
-      //Immunization data
+      // Immunization data
       vCode: { value: "" },
       vManufacturer: { value: "" },
       vStatus: { value: "" },
@@ -241,52 +200,15 @@
     };
   }
 
-  function getBloodPressureValue(BPObservations, typeOfPressure) {
-    var formattedBPObservations = [];
-    BPObservations.forEach(function (observation) {
-      var BP = observation.component.find(function (component) {
-        return component.code.coding.find(function (coding) {
-          return coding.code == typeOfPressure;
-        });
-      });
-      if (BP) {
-        observation.valueQuantity = BP.valueQuantity;
-        formattedBPObservations.push(observation);
-      }
-    });
-
-    return getQuantityValueAndUnit(formattedBPObservations[0]);
-  }
-
-  function getQuantityValueAndUnit(ob) {
-    if (
-      typeof ob != "undefined" &&
-      typeof ob.valueQuantity != "undefined" &&
-      typeof ob.valueQuantity.value != "undefined" &&
-      typeof ob.valueQuantity.unit != "undefined"
-    ) {
-      return ob.valueQuantity.value + " " + ob.valueQuantity.unit;
-    } else {
-      return undefined;
-    }
-  }
-
+  /***** HTML indexing *****/
   window.drawVisualization = function (p) {
+    // Patient data
     $("#holder").show();
     $("#loading").hide();
     $("#fname").html(p.fname);
     $("#lname").html(p.lname);
     $("#gender").html(p.gender);
     $("#birthdate").html(p.birthdate);
-
-    //$('#lymph').html(p.lymph);
-    // Cerner SoF Tutorial Observations
-    //$("#height").html(p.height);
-    //$("#weight").html(p.weight);
-    //$("#systolicbp").html(p.systolicbp);
-    //$("#diastolicbp").html(p.diastolicbp);
-    //$("#ldl").html(p.ldl);
-    //$("#hdl").html(p.hdl);
 
     //Immunization data
     $("#type").html(p.vCode);
