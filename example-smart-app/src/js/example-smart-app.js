@@ -1,5 +1,3 @@
-const { date } = require("joi");
-
 (function (window) {
   window.extractData = function () {
     var ret = $.Deferred();
@@ -196,7 +194,9 @@ const { date } = require("joi");
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
-          // Immunizations
+
+          /***** PROBLEMS HERE *****/
+          // Immunizations 
           p.vCode = vaccineCode;
           p.vManufacturer = vaccineManufacturer;
           p.vStatus = vaccineStatus;
@@ -223,6 +223,9 @@ const { date } = require("joi");
     return ret.promise();
   };
 
+
+  /***** HELPER FUNCTIONS *****/
+
   function defaultPatient() {
     return {
       fname: { value: "" },
@@ -248,8 +251,6 @@ const { date } = require("joi");
       vExpiryDate: { value: "" },
     };
   }
-
-  // Helper Function
 
   function getBloodPressureValue(BPObservations, typeOfPressure) {
     var formattedBPObservations = [];
