@@ -23,11 +23,11 @@
       <h1>Health Records</h1>
       <div id="errors"></div>
       <!--***** Loading bar, remove when done styling *****-->
-      <!--<div id="loading" class="spinner">
+      <div id="loading" class="spinner">
         <div class="bounce1"></div>
         <div class="bounce2"></div>
         <div class="bounce3"></div>
-      </div>-->
+      </div>
       <h2>Your Immunizations</h2>
       <img src="https://media-exp1.licdn.com/dms/image/C560BAQEgrKE84OOUOg/company-logo_200_200/0/1635774256560?e=2147483647&v=beta&t=ZDyFJmyvDfblW7WkDdIMrBLMR4os7OHIvW1Ww6qiJNs" alt="Tell Health" id="immunization_image">
       <table>
@@ -77,7 +77,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <!--***** Disabled script for HTML development *****-->
-    <!--<script>
+    <script>
       extractData().then(
         //Display Patient Demographics and Observations if extractData was success
         function (p) {
@@ -90,6 +90,6 @@
           $("#errors").html("<p> Failed to call FHIR Service </p>");
         }
       );
-    </script>-->
+    </script>
   </body>
 </html>
