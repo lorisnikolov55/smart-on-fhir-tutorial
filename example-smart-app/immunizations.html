@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cerner Sandbox App Immunizations</title>
+    </head> 
+    <body>
+        <h1>Immunizations page</h1>
+        <h2>Immunization Data</h2>
+        <table>
+            <tr>
+            <th>Type:</th>
+            <td id="type"></td>
+            </tr>
+            <tr>
+            <th>Manufacturer:</th>
+            <td id="manufacturer"></td>
+            </tr>
+            <tr>
+            <th>Status:</th>
+            <td id="status"></td>
+            </tr>
+            <tr>
+            <th>Quantity:</th>
+            <td id="quantity"></td>
+            </tr>
+            <tr>
+            <th>Date Given:</th>
+            <td id="dateGiven"></td>
+            </tr>
+            <tr>
+            <th>Expiration Date:</th>
+            <td id="expiryDate"></td>
+            </tr>
+        </table>
+        </div>
+        <!-- Application-level javascript-->
+        <script src="./src/js/example-smart-app.js"></script>
+
+        <!-- FHIR Client JS Library -->
+        <script src="./lib/js/fhir-client-v0.1.12.js"></script>
+        
+        <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
+        <!-- https://github.com/cerner/fhir-client-cerner-additions -->
+        <script src="./lib/js/fhir-client-cerner-additions-1.0.0.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        
+        <!--***** Disabled script for HTML development *****-->
+        <script>
+            extractData().then(
+            //Display Patient Demographics and Observations if extractData was success
+            function (p) {
+                drawVisualization(p);
+            },
+        
+            //Display 'Failed to call FHIR Service' if extractData failed
+            function () {
+                $("#loading").hide();
+                $("#errors").html("<p> Failed to call FHIR Service </p>");
+            }
+            );
+        </script>
+  </body>
+</html>
