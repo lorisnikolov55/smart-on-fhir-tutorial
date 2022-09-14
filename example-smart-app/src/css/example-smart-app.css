@@ -8,9 +8,9 @@ body {
   margin: 0;
 }
 
-#holder { 
+#holder {
   display: none;
-} 
+}
 
 .spinner {
   margin: 100px auto 0;
@@ -43,7 +43,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 .navbar {
