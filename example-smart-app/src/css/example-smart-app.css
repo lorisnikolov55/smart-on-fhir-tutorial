@@ -123,8 +123,8 @@ body {
 #immunization_image{
   max-width: fit-content;
   max-height: fit-content;
-  height: 160px;
-  width: 160px;
+  height: 90px;
+  width: 90px;
 }
 
 @-webkit-keyframes sk-bouncedelay {
