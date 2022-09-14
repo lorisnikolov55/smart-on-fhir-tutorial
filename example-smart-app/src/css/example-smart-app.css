@@ -120,6 +120,13 @@ body {
   padding: 10px;
 }
 
+#immunization_image{
+  max-width: fit-content;
+  max-height: fit-content;
+  height: 160px;
+  width: 160px;
+}
+
 @-webkit-keyframes sk-bouncedelay {
   0%,
   80%,

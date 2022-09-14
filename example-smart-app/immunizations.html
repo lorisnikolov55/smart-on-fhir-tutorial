@@ -1,66 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cerner Sandbox App Immunizations</title>
-    </head> 
-    <body>
-        <h1>Immunizations page</h1>
-        <h2>Immunization Data</h2>
-        <table>
-            <tr>
-            <th>Type:</th>
-            <td id="type"></td>
-            </tr>
-            <tr>
-            <th>Manufacturer:</th>
-            <td id="manufacturer"></td>
-            </tr>
-            <tr>
-            <th>Status:</th>
-            <td id="status"></td>
-            </tr>
-            <tr>
-            <th>Quantity:</th>
-            <td id="quantity"></td>
-            </tr>
-            <tr>
-            <th>Date Given:</th>
-            <td id="dateGiven"></td>
-            </tr>
-            <tr>
-            <th>Expiration Date:</th>
-            <td id="expiryDate"></td>
-            </tr>
-        </table>
-        </div>
-        <!-- Application-level javascript-->
-        <script src="./src/js/example-smart-app.js"></script>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Cerner Sandbox App;</title>
 
-        <!-- FHIR Client JS Library -->
-        <script src="./lib/js/fhir-client-v0.1.12.js"></script>
-        
-        <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
-        <!-- https://github.com/cerner/fhir-client-cerner-additions -->
-        <script src="./lib/js/fhir-client-cerner-additions-1.0.0.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        
-        <!--***** Disabled script for HTML development *****-->
-        <!--<script>
-            extractData().then(
-            //Display Patient Demographics and Observations if extractData was success
-            function (p) {
-                drawVisualization(p);
-            },
-        
-            //Display 'Failed to call FHIR Service' if extractData failed
-            function () {
-                $("#loading").hide();
-                $("#errors").html("<p> Failed to call FHIR Service </p>");
-            }
-            );
-        </script>-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./src/css/example-smart-app.css"
+    />
+
+    <!--***** Disabled loading bar for HTML development *****-->
+    <!--
+          Temporarily disable cerner-smart-embeddable-lib
+        <link rel='stylesheet' type='text/css' href='./lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
+        -->
+  </head>
+  <body style="background-color: navy">
+    <div class="child">
+      <h1>Health Records</h1>
+      <div id="errors"></div>
+      <!--***** Loading bar, remove when done styling *****-->
+      <!--<div id="loading" class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>-->
+      <h2>Your Immunizations</h2>
+      <img src="data:image/png;base64,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" alt="Immunization" id="immunization_image">
+      <table>
+          <tr>
+          <th>Type:</th>
+          <td id="type"></td>
+          </tr>
+          <tr>
+          <th>Manufacturer:</th>
+          <td id="manufacturer"></td>
+          </tr>
+          <tr>
+          <th>Status:</th>
+          <td id="status"></td>
+          </tr>
+          <tr>
+          <th>Quantity:</th>
+          <td id="quantity"></td>
+          </tr>
+          <tr>
+          <th>Date Given:</th>
+          <td id="dateGiven"></td>
+          </tr>
+          <tr>
+          <th>Expiration Date:</th>
+          <td id="expiryDate"></td>
+          </tr>
+      </table>
+      <!--***** Removing immunizations from index.html and moving them to immunizations.html *****-->
+    </div>
+    <!-- Required JS files to enable this page to embed within an MPage -->
+    <!--
+          Temporarily disable cerner-smart-embeddable-lib
+          <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'></script>
+          <script src='./lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
+        -->
+
+    <!-- Application-level javascript-->
+    <script src="./src/js/example-smart-app.js"></script>
+
+    <!-- FHIR Client JS Library -->
+    <script src="./lib/js/fhir-client-v0.1.12.js"></script>
+
+    <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
+    <!-- https://github.com/cerner/fhir-client-cerner-additions -->
+    <script src="./lib/js/fhir-client-cerner-additions-1.0.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!--***** Disabled script for HTML development *****-->
+    <!--<script>
+      extractData().then(
+        //Display Patient Demographics and Observations if extractData was success
+        function (p) {
+          drawVisualization(p);
+        },
+
+        //Display 'Failed to call FHIR Service' if extractData failed
+        function () {
+          $("#loading").hide();
+          $("#errors").html("<p> Failed to call FHIR Service </p>");
+        }
+      );
+    </script>-->
   </body>
 </html>
