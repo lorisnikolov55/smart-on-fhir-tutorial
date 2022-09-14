@@ -47,7 +47,6 @@ body {
 }
 
 .navbar {
-  background: navy;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -66,13 +65,14 @@ body {
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0 50px;
+  padding: 0 10px;
 }
 
 #navbar_logo {
   background-color: navy;
   background-image: linear-gradient(to top, navy 0%, blue 100%);
   background-size: 100%;
+  background-clip: text;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -89,13 +89,13 @@ body {
   width: fit-content;
   height: fit-content;
   border-color: blue;
-  border-radius: 20px;
+  border-radius: 10px;
   border-style: solid;
   border-width: thin;
   text-align: center;
   margin: auto;
   margin-top: 10%;
-  margin-bottom: 10%;
+  padding: 10px;
 }
 
 @-webkit-keyframes sk-bouncedelay {
