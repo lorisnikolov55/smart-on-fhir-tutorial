@@ -84,6 +84,28 @@ body {
   font-size: 2rem;
 }
 
+.navbar_menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+}
+
+.navbar_links {
+  color: navy;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+}
+
+.navbar_links:hover {
+  color: #008cff;
+  transition: all 0.3s ease;
+}
+
 .child {
   background-color: white;
   width: fit-content;
