@@ -30,10 +30,9 @@
     <script src="./lib/js/fhir-client-cerner-additions-1.0.0.js"></script>
     <script>
       FHIR.oauth2.authorize({
-        client_id: "bcd62ba0-6cc0-4110-b460-2a4f0845eede",
-        // testing provider facing app
+        client_id: "f9940452-4798-4bb3-8a40-f5e0d60a8ac5",
         scope:
-          "user/Patient.read user/Immunization.read launch/user online_access openid profile fhirUser",
+          "patient/Patient.read patient/Immunization.read launch/patient online_access openid profile fhirUser",
       });
     </script>
     <div class="spinner">
